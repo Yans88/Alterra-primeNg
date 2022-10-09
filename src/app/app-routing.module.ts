@@ -17,6 +17,7 @@ import { NotfoundComponent } from './pages/notfound/notfound.component';
               loadChildren: () =>
                 import('./pages/pages.module').then((m) => m.PagesModule),
             },
+           
           ],
         },
 

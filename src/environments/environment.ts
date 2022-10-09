@@ -7,6 +7,7 @@ export const environment = {
   endpoint: {
     mockApi: 'https://jsonplaceholder.typicode.com',
     altaApi: 'https://alta-shop.herokuapp.com/api',
+    crudAPI: 'http://devs.andtechnology.me/freshbox_api',
   },
 };
 

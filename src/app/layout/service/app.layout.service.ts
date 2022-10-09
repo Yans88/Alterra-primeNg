@@ -27,7 +27,7 @@ export class LayoutService {
     ripple: true,
     inputStyle: 'outlined',
     menuMode: 'static',
-    colorScheme: 'dark',
+    colorScheme: 'light',
     theme: 'lara-light-indigo',
     scale: 14,
   };

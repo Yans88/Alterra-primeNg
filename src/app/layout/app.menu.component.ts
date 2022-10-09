@@ -28,6 +28,11 @@ export class AppMenuComponent implements OnInit {
             icon: 'pi pi-whatsapp',
             routerLink: ['/pages/contact_us'],
           },
+          {
+            label: 'CRUD Data Provinsi',
+            icon: 'pi pi-book',
+            routerLink: ['/pages/crud'],
+          },
         ],
       },
     ];
