@@ -3,7 +3,11 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  endpoint: {
+    mockApi: 'https://jsonplaceholder.typicode.com',
+    altaApi: 'https://alta-shop.herokuapp.com/api',
+  },
 };
 
 /*
