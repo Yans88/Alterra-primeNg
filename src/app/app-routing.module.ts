@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppLayoutComponent } from './layout/app.layout.component';
 import { NotfoundComponent } from './pages/notfound/notfound.component';
+import { AuthGuard } from './core/auth.guard';
 
 @NgModule({
   imports: [
@@ -10,6 +11,8 @@ import { NotfoundComponent } from './pages/notfound/notfound.component';
       [
         {
           path: '',
+          canLoad: [AuthGuard],
+          canActivate: [AuthGuard],
           component: AppLayoutComponent,
           children: [
             {
@@ -17,10 +20,13 @@ import { NotfoundComponent } from './pages/notfound/notfound.component';
               loadChildren: () =>
                 import('./pages/pages.module').then((m) => m.PagesModule),
             },
-           
           ],
         },
-
+        {
+          path: 'auth',
+          loadChildren: () =>
+            import('./auth/auth.module').then((m) => m.AuthModule),
+        },
         { path: 'pages/notfound', component: NotfoundComponent },
         { path: '**', redirectTo: 'pages/notfound' },
       ],

@@ -13,7 +13,6 @@ import { SkeletonModule } from 'primeng/skeleton';
 import { FormAddComponent } from './form-add/form-add.component';
 import { InputTextModule } from 'primeng/inputtext';
 import { FormsModule } from '@angular/forms';
-import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [ListDataComponent, FormAddComponent],

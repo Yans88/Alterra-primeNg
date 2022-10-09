@@ -29,9 +29,11 @@
     }"
   >
     <button class="p-link layout-topbar-button" (click)="menu.toggle($event)">
+      <h6 class="mr-2 mt-4">{{ sessionService.getEmail() | async }}</h6>
       <i class="pi pi-user"></i>
       <span>Profile</span>
     </button>
+
     <p-menu #menu [popup]="true" [model]="items2"></p-menu>
   </div>
 </div>
