@@ -39,7 +39,6 @@ export class ListDataComponent implements OnInit, OnDestroy {
     this.isLoading = false;
     this.crudService.getData().pipe(takeUntil(this.unsubcribe$)).subscribe((res: IDataResponse) => {
       this.items = res;
-
     });
     //this.items$=this.crudService.getData();
 
