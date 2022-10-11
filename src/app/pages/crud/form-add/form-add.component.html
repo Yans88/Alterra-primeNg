@@ -1,6 +1,7 @@
 <div class="card p-fluid">
   <h5>Add/Edit Data</h5>
   <p-toast position="top-center"></p-toast>
+  <form name="addProvinsi">
   <div class="field grid">
     <label htmlFor="id_provinsi" class="col-12 mb-2 md:col-2 md:mb-0">ID</label>
     <div class="col-12 md:col-10">
@@ -17,7 +18,7 @@
   </div>
   <div class="field grid">
     <label htmlFor="nama_provinsi" class="col-12 mb-2 md:col-2 md:mb-0"
-      >Provinsi</label
+    >Provinsi</label
     >
     <div class="col-12 md:col-10">
       <input
@@ -26,6 +27,7 @@
         id="nama_provinsi"
         name="nama_provinsi"
         type="text"
+        required
         placeholder="Provinsi"
       />
     </div>
@@ -46,4 +48,5 @@
       styleClass="p-button-sm p-button-success ml-2"
     ></p-button>
   </div>
+  </form>
 </div>

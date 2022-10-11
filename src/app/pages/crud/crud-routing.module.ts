@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { FormAddComponent } from './form-add/form-add.component';
-import { ListDataComponent } from './list-data/list-data.component';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {FormAddComponent} from './form-add/form-add.component';
+import {ListDataComponent} from './list-data/list-data.component';
 
 const routes: Routes = [
   {
@@ -22,4 +22,5 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class CrudRoutingModule {}
+export class CrudRoutingModule {
+}

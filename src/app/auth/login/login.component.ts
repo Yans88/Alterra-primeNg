@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import { AuthService } from '../auth.service';
-import { MySessionService } from '../my-session.service';
-import { Subject, switchMap, takeUntil } from 'rxjs';
+import {Component} from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
+import {AuthService} from '../auth.service';
+import {MySessionService} from '../my-session.service';
+import {Subject, switchMap, takeUntil} from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -33,17 +33,19 @@ export class LoginComponent {
   loginForm!: FormGroup;
   private ngUnsubsribe = new Subject();
   isLoading: boolean = false;
+
   constructor(
     private route: Router,
     private actRoute: ActivatedRoute,
     private authService: AuthService,
     private sessionService: MySessionService
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
-      email: new FormControl(''),
-      password: new FormControl(''),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [Validators.required]),
     });
   }
 

@@ -1,14 +1,19 @@
-import { RouterModule } from '@angular/router';
-import { NgModule } from '@angular/core';
+import {RouterModule} from '@angular/router';
+import {NgModule} from '@angular/core';
 
-import { AppLayoutComponent } from './layout/app.layout.component';
-import { NotfoundComponent } from './pages/notfound/notfound.component';
-import { AuthGuard } from './core/auth.guard';
+import {AppLayoutComponent} from './layout/app.layout.component';
+import {NotfoundComponent} from './pages/notfound/notfound.component';
+import {AuthGuard} from './core/auth.guard';
 
 @NgModule({
   imports: [
     RouterModule.forRoot(
       [
+        {
+          path: '',
+          redirectTo: 'home',
+          pathMatch: 'full'
+        },
         {
           path: '',
           canLoad: [AuthGuard],
@@ -19,7 +24,11 @@ import { AuthGuard } from './core/auth.guard';
               path: 'pages',
               loadChildren: () =>
                 import('./pages/pages.module').then((m) => m.PagesModule),
-            },
+            }, {
+              path: 'home',
+              loadChildren: () =>
+                import('./pages/pages.module').then((m) => m.PagesModule),
+            }
           ],
         },
         {
@@ -27,8 +36,8 @@ import { AuthGuard } from './core/auth.guard';
           loadChildren: () =>
             import('./auth/auth.module').then((m) => m.AuthModule),
         },
-        { path: 'pages/notfound', component: NotfoundComponent },
-        { path: '**', redirectTo: 'pages/notfound' },
+        {path: 'pages/notfound', component: NotfoundComponent},
+        {path: '**', redirectTo: 'pages/notfound'},
       ],
       {
         scrollPositionRestoration: 'enabled',
@@ -39,4 +48,5 @@ import { AuthGuard } from './core/auth.guard';
   ],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule {
+}

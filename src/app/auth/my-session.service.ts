@@ -1,11 +1,12 @@
-import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import {Injectable} from '@angular/core';
+import {Observable, of} from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MySessionService {
-  constructor() {}
+  constructor() {
+  }
 
   createSession(info: any) {
     localStorage.setItem('user_info', JSON.stringify(info));

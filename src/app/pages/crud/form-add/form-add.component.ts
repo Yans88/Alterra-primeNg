@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { MessageService } from 'primeng/api';
-import { CrudService } from '../crud.service';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {MessageService} from 'primeng/api';
+import {CrudService} from '../crud.service';
 
 @Component({
   selector: 'app-form-add',
@@ -15,7 +15,8 @@ export class FormAddComponent implements OnInit {
     private messageService: MessageService,
     private router: Router,
     private route: ActivatedRoute
-  ) {}
+  ) {
+  }
 
   id_provinsi?: number;
   nama_provinsi?: string;
@@ -51,6 +52,7 @@ export class FormAddComponent implements OnInit {
       }
     );
   }
+
   back(): void {
     this.router.navigateByUrl('pages/crud');
   }

@@ -1,18 +1,14 @@
-import { Injectable } from '@angular/core';
-import {
-  HttpRequest,
-  HttpHandler,
-  HttpEvent,
-  HttpInterceptor,
-  HttpErrorResponse,
-} from '@angular/common/http';
-import { catchError, Observable, of } from 'rxjs';
-import { MySessionService } from '../auth/my-session.service';
-//import Swal from 'sweetalert2/dist/sweetalert2.js';
+import {Injectable} from '@angular/core';
+import {HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest,} from '@angular/common/http';
+import {catchError, Observable, of} from 'rxjs';
+import {MySessionService} from '../auth/my-session.service';
+// @ts-ignore
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 
 @Injectable()
 export class MyHttpInterceptor implements HttpInterceptor {
-  constructor(private sessionService: MySessionService) {}
+  constructor(private sessionService: MySessionService) {
+  }
 
   intercept(
     request: HttpRequest<unknown>,
@@ -43,19 +39,18 @@ export class MyHttpInterceptor implements HttpInterceptor {
   }
 
   private handleError(err: HttpErrorResponse): Observable<any> {
-    console.log(err);
     if (err.status === 400) {
-      /*  Swal.fire({
+      Swal.fire({
         icon: 'error',
         title: err?.status,
         text: err?.error?.error,
-      }); */
+      });
     } else if (err.status === 500) {
-      /* Swal.fire({
+      Swal.fire({
         icon: 'error',
         title: 'Internal Service Error',
         text: err?.error?.error,
-      }); */
+      });
     }
     throw Error;
   }

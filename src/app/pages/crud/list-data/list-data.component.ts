@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { ConfirmationService, MessageService } from 'primeng/api';
-import { CrudService } from '../crud.service';
-import { IProvinsiModel } from '../models/crud.model';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {ConfirmationService, MessageService} from 'primeng/api';
+import {CrudService} from '../crud.service';
+import {IDataResponse} from '../models/crud.model';
+import {Subject, takeUntil} from "rxjs";
+// @ts-ignore
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 
 @Component({
   selector: 'app-list-data',
@@ -9,29 +12,49 @@ import { IProvinsiModel } from '../models/crud.model';
   styleUrls: ['./list-data.component.scss'],
   providers: [ConfirmationService, MessageService],
 })
-export class ListDataComponent implements OnInit {
-  items!: IProvinsiModel[];
+export class ListDataComponent implements OnInit, OnDestroy {
+  items!: IDataResponse;
   isLoading: boolean = true;
+
+  private unsubcribe$ = new Subject();
+
   constructor(
     private crudService: CrudService,
     private confirmationService: ConfirmationService,
     private messageService: MessageService
-  ) {}
+  ) {
+  }
+
 
   ngOnInit(): void {
     this.getData();
   }
 
+  ngOnDestroy() {
+    this.unsubcribe$.next(true);
+    this.unsubcribe$.complete();
+  }
+
   getData() {
-    this.crudService.getData().then((res) => {
+    this.isLoading = false;
+    this.crudService.getData().pipe(takeUntil(this.unsubcribe$)).subscribe((res: IDataResponse) => {
       this.items = res;
-      this.isLoading = false;
+
+    });
+    //this.items$=this.crudService.getData();
+
+  }
+
+  addData() {
+    Swal.fire({
+      icon: 'error',
+      title: 'Internal Service Error',
+      text: 'ooo',
     });
   }
 
-  addData() {}
-
   onDelete(id: number, event: Event): void {
+    //console.log(id);
     this.confirmationService.confirm({
       key: 'confirm_' + id,
       target: event.target || new EventTarget(),

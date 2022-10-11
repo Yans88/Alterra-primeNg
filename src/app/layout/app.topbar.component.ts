@@ -1,8 +1,8 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
-import { MenuItem } from 'primeng/api';
-import { MySessionService } from '../auth/my-session.service';
-import { LayoutService } from './service/app.layout.service';
+import {Component, ElementRef, ViewChild} from '@angular/core';
+import {Router} from '@angular/router';
+import {MenuItem} from 'primeng/api';
+import {MySessionService} from '../auth/my-session.service';
+import {LayoutService} from './service/app.layout.service';
 
 @Component({
   selector: 'app-topbar',
@@ -31,6 +31,7 @@ export class AppTopBarComponent {
       },
     ];
   }
+
   logOut(): void {
     this.sessionService.destroySession();
     this.router.navigateByUrl('/auth/login');
